@@ -121,3 +121,22 @@ Auth Service
 | `index.html` | Código-fonte | Desktop | `/desktop-app/src/renderer/` | v1.0.0 | João Lucas | -
 | `main.tsx` | Código-fonte | Desktop | `/desktop-app/src/renderer/` | v1.0.0 | João Lucas | `react`, `react-dom`
 | `styles.css` | Código-fonte | Desktop | `/desktop-app/src/renderer/` | v1.0.0 | João Lucas | -
+
+# Web Bank
+
+| Item de Configuração | Tipo          | Plataforma | Localização                 | Versão | Responsável | Dependências                  |
+|----------------------|---------------|------------|-----------------------------|--------|-------------|--------------------------------|
+| `package.json`       | Configuração | Mobile    | `/mobile-app/`              | v1.0.0 | João Lucas  | `expo`, `expo-router`, `react-native` |
+| `tsconfig.json`      | Configuração | Mobile    | `/mobile-app/`              | v1.0.0 | João Lucas  | -                             |
+| `app.json`           | Configuração | Mobile    | `/mobile-app/`              | v1.0.0 | João Lucas  | -                             |
+| `api.ts`             | Configuração | Mobile    | `/mobile-app/src/config/`   | v1.0.0 | João Lucas  | `axios`                       |
+| `index.ts`           | Código-fonte | Mobile    | `/mobile-app/src/types/`    | v1.0.0 | João Lucas  | -                             |
+| `auth.service.ts`    | Código-fonte | Mobile    | `/mobile-app/src/services/` | v1.0.0 | João Lucas  | `axios`, `api.ts`             |
+| `transfer.service.ts`| Código-fonte | Mobile    | `/mobile-app/src/services/` | v1.0.0 | Raykkoner   | `axios`, `api.ts`             |
+| `payment.service.ts` | Código-fonte | Mobile    | `/mobile-app/src/services/` | v1.0.0 | Raykkoner   | `axios`, `api.ts`             |
+| `notification.service.ts` | Código-fonte | Mobile    | `/mobile-app/src/services/` | v1.0.0 | Raykkoner   | `axios`, `api.ts`             |
+| `AuthContext.tsx`    | Código-fonte | Mobile    | `/mobile-app/src/contexts/` | v1.0.0 | Raykkoner   | `react`, `auth.service.ts`    |
+| `_layout.tsx`        | Código-fonte | Mobile    | `/mobile-app/app/`          | v1.0.0 | Raykkoner   | `expo-router`, `AuthContext.tsx` |
+| `index.tsx`          | Código-fonte | Mobile    | `/mobile-app/app/(auth)/`   | v1.0.0 | Raykkoner   | `expo-router`, `AuthContext.tsx` |
+| `register.tsx`       | Código-fonte | Mobile    | `/mobile-app/app/(auth)/`   | v1.0.0 | Raykkoner   | `expo-router`, `AuthContext.tsx` |
+| `_layout.tsx`        | Código-fonte |
