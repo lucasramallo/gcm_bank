@@ -1,114 +1,50 @@
-# GCM Bank - Mobile App
+# Welcome to your Expo app 👋
 
-App mobile em React Native com Expo e Expo Router para o GCM Bank.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 🚀 Tecnologias
+## Get started
 
-- **Expo** (~51.0.0)
-- **Expo Router** (~3.5.0) - Navegação baseada em arquivos
-- **TypeScript** - Tipagem estática
-- **React Native** (0.74.0)
-- **Axios** - Cliente HTTP para integração com os serviços
+1. Install dependencies
 
-## 📁 Estrutura do Projeto
+   ```bash
+   npm install
+   ```
 
-\`\`\`
-mobile-app/
-├── app/                      # Rotas do Expo Router
-│   ├── (auth)/              # Grupo de rotas de autenticação
-│   │   ├── _layout.tsx      # Layout das telas de auth
-│   │   ├── login.tsx        # Tela de login
-│   │   └── register.tsx     # Tela de cadastro
-│   ├── (tabs)/              # Grupo de rotas com tabs
-│   │   ├── _layout.tsx      # Layout com bottom tabs
-│   │   ├── home.tsx         # Tela inicial
-│   │   ├── transfer.tsx     # Tela de transferências
-│   │   ├── payment.tsx      # Tela de pagamentos
-│   │   ├── notifications.tsx # Tela de notificações
-│   │   └── profile.tsx      # Tela de perfil
-│   ├── _layout.tsx          # Layout raiz
-│   └── index.tsx            # Tela inicial (splash/redirect)
-├── src/
-│   ├── config/
-│   │   └── api.ts           # Configuração das APIs
-│   ├── contexts/
-│   │   └── AuthContext.tsx  # Context de autenticação
-│   ├── services/            # Serviços de integração
-│   │   ├── auth.service.ts
-│   │   ├── transfer.service.ts
-│   │   ├── payment.service.ts
-│   │   └── notification.service.ts
-│   └── types/
-│       └── index.ts         # Tipos TypeScript
-├── assets/                  # Imagens e recursos
-├── app.json                 # Configuração do Expo
-├── package.json
-└── tsconfig.json
-\`\`\`
+2. Start the app
 
-## 🔧 Instalação
+   ```bash
+   npx expo start
+   ```
 
-\`\`\`bash
-cd mobile-app
-npm install
-\`\`\`
+In the output, you'll find options to open the app in a
 
-## 🏃 Executar
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-\`\`\`bash
-# Iniciar o servidor de desenvolvimento
-npm start
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-# Executar no Android
-npm run android
+## Get a fresh project
 
-# Executar no iOS
-npm run ios
+When you're ready, run:
 
-# Executar na web
-npm run web
-\`\`\`
+```bash
+npm run reset-project
+```
 
-## 🔌 Integração com Serviços
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-O app está configurado para se integrar com os seguintes serviços do backend:
+## Learn more
 
-- **Auth Service** (porta 3001) - Autenticação e criptografia
-- **Transfer Service** (porta 3002) - Transferências entre contas
-- **Payment Service** (porta 3003) - Pagamento de contas
-- **Notification Service** (porta 3004) - Notificações
+To learn more about developing your project with Expo, look at the following resources:
 
-Configure as URLs dos serviços no arquivo `.env`:
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-\`\`\`env
-EXPO_PUBLIC_AUTH_SERVICE_URL=http://localhost:3001
-EXPO_PUBLIC_TRANSFER_SERVICE_URL=http://localhost:3002
-EXPO_PUBLIC_PAYMENT_SERVICE_URL=http://localhost:3003
-EXPO_PUBLIC_NOTIFICATION_SERVICE_URL=http://localhost:3004
-\`\`\`
+## Join the community
 
-## 📱 Navegação
+Join our community of developers creating universal apps.
 
-O app utiliza **Expo Router** com navegação baseada em arquivos:
-
-- **Grupos de rotas**: `(auth)` e `(tabs)` para organizar as telas
-- **Layouts aninhados**: Cada grupo tem seu próprio `_layout.tsx`
-- **Navegação por tabs**: Bottom tabs para as telas principais
-- **Proteção de rotas**: Context de autenticação gerencia acesso
-
-## 🔐 Autenticação
-
-O `AuthContext` gerencia o estado de autenticação:
-- Armazena token e dados do usuário no AsyncStorage
-- Intercepta requisições para adicionar token de autenticação
-- Redireciona automaticamente entre telas públicas e privadas
-
-## 📝 Próximos Passos
-
-As telas estão estruturadas e prontas para receber conteúdo. Você pode:
-
-1. Implementar os formulários nas telas de auth
-2. Adicionar componentes de UI nas telas principais
-3. Integrar com os serviços do backend
-4. Adicionar validações e tratamento de erros
-5. Implementar testes
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
