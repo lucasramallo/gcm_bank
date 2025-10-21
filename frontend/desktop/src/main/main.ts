@@ -1,7 +1,7 @@
-import { app, BrowserWindow, ipcMain } from "electron"
-import * as path from "path"
+import { app, BrowserWindow, ipcMain } from "electron";
+import * as path from "path";
 
-let mainWindow: BrowserWindow | null = null
+let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -19,37 +19,38 @@ function createWindow() {
       color: "#ffffff",
       symbolColor: "#000000",
     },
-  })
+    icon: path.join(__dirname, "../../src/renderer/assets/bank-icon.png")
+  });
 
   if (process.env.NODE_ENV === "development") {
-    mainWindow.loadURL("http://localhost:5173")
-    mainWindow.webContents.openDevTools()
+    mainWindow.loadURL("http://localhost:5173");
+    // mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"))
+    mainWindow.loadFile(path.join(__dirname, "../../src/renderer/index.html"));
   }
 
   mainWindow.on("closed", () => {
-    mainWindow = null
-  })
+    mainWindow = null;
+  });
 }
 
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow();
     }
-  })
-})
+  });
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 // IPC handlers for secure communication
 ipcMain.handle("get-app-version", () => {
-  return app.getVersion()
-})
+  return app.getVersion();
+});

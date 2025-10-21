@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider, useAuth } from "./contexts/AuthContext"
-import { LoginPage } from "./pages/LoginPage"
-import { RegisterPage } from "./pages/RegisterPage"
-import { DashboardPage } from "./pages/DashboardPage"
-import { TransfersPage } from "./pages/TransfersPage"
-import { PaymentsPage } from "./pages/PaymentsPage"
-import { NotificationsPage } from "./pages/NotificationsPage"
-import { ProfilePage } from "./pages/ProfilePage"
-import { Layout } from "./components/Layout"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
+import { DashboardPage } from "./pages/DashboardPage";
+import { TransfersPage } from "./pages/TransfersPage";
+import { PaymentsPage } from "./pages/PaymentsPage";
+import { NotificationsPage } from "./pages/NotificationsPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { Layout } from "./components/Layout";
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 }
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  return !isAuthenticated ? <>{children}</> : <Navigate to="/dashboard" />
+  return !isAuthenticated ? <>{children}</> : <Navigate to="/dashboard" />;
 }
 
 function AppRoutes() {
@@ -68,7 +68,7 @@ function AppRoutes() {
         <Route path="profile" element={<ProfilePage />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
 export default function App() {
@@ -78,5 +78,5 @@ export default function App() {
         <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useAuth } from "../contexts/AuthContext"
+import { useAuth } from "../contexts/AuthContext";
 
 export function ProfilePage() {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   return (
     <div>
@@ -24,5 +24,5 @@ export function ProfilePage() {
         {/* Formulário de edição de perfil será implementado aqui */}
       </div>
     </div>
-  )
+  );
 }

@@ -1,55 +1,83 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export function LoginPage() {
-  const { login } = useAuth()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
+    e.preventDefault();
+    setError("");
 
     try {
-      await login({ email, password })
+      await login({ email, password });
     } catch (err) {
-      setError("Falha no login. Verifique suas credenciais.")
+      setError("Falha no login. Verifique suas credenciais.");
     }
-  }
+  };
+
+  useEffect(() => {
+    setError("");
+  }, [email, password]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-      <div style={{ width: "400px", padding: "40px", border: "1px solid #ddd", borderRadius: "8px" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          padding: "40px",
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+        }}
+      >
         <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "20px" }}>
-            <label>Email</label>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            margin: "30px 0px",
+          }}
+        >
+          <div>
             <input
               type="email"
               value={email}
+              placeholder="Digite seu email"
               onChange={(e) => setEmail(e.target.value)}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label>Senha</label>
+          <div>
             <input
               type="password"
               value={password}
+              placeholder="Digite sua senha"
               onChange={(e) => setPassword(e.target.value)}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <button type="submit" style={{ width: "100%", padding: "10px" }}>
+          {error && (
+            <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+          )}
+          <button type="submit" style={{ width: "100%" }}>
             Entrar
           </button>
         </form>
@@ -58,5 +86,5 @@ export function LoginPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }

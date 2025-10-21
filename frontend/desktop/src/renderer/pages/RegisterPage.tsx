@@ -1,87 +1,115 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export function RegisterPage() {
-  const { register } = useAuth()
+  const { register } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     cpf: "",
-  })
-  const [error, setError] = useState("")
+  });
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
+    e.preventDefault();
+    setError("");
 
     try {
-      await register(formData)
+      await register(formData);
     } catch (err) {
-      setError("Falha no registro. Tente novamente.")
+      setError("Falha no registro. Tente novamente.");
     }
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    let value = e.target.value;
+    if(e.target.name === "cpf") value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4")
+    setFormData({ ...formData, [e.target.name]: value });
+  };
+
+  useEffect(() => {
+    setError("");
+  }, [formData]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-      <div style={{ width: "400px", padding: "40px", border: "1px solid #ddd", borderRadius: "8px" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          padding: "40px",
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+        }}
+      >
         <h1>Registro</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "20px" }}>
-            <label>Nome</label>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            margin: "30px 0px",
+          }}
+        >
+          <div>
             <input
               type="text"
               name="name"
               value={formData.name}
+              placeholder="Nome"
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label>Email</label>
+          <div>
             <input
               type="email"
               name="email"
               value={formData.email}
+              placeholder="Email"
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label>CPF</label>
+          <div>
             <input
               type="text"
               name="cpf"
               value={formData.cpf}
+              placeholder="CPF"
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label>Senha</label>
+          <div>
             <input
               type="password"
               name="password"
               value={formData.password}
+              placeholder="Senha"
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              style={{ width: "100%", marginTop: "5px" }}
               required
             />
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <button type="submit" style={{ width: "100%", padding: "10px" }}>
+          <button type="submit" style={{ width: "100%" }}>
             Registrar
           </button>
         </form>
@@ -90,5 +118,5 @@ export function RegisterPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }

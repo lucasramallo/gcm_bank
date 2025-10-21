@@ -11,5 +11,5 @@ export function TransfersPage() {
         {/* Lista de transferências será implementada aqui */}
       </div>
     </div>
-  )
+  );
 }

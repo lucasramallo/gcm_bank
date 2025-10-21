@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { Outlet, Link, useLocation } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
+import { Outlet, Link, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export function Layout() {
-  const { user, logout } = useAuth()
-  const location = useLocation()
+  const { user, logout } = useAuth();
+  const location = useLocation();
 
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       {/* Sidebar */}
-      <aside style={{ width: "250px", background: "#f5f5f5", padding: "20px" }}>
-        <h2>GCM Bank</h2>
+      <aside style={{ width: "250px", background: "#006a9c", padding: "20px", display: "flex", flexDirection: "column" }}>
+        <h2 style={{ textDecoration: "underline", textDecorationColor: "#000" }}>GCM Bank</h2>
         <nav style={{ marginTop: "40px" }}>
           <ul style={{ listStyle: "none", padding: 0 }}>
             <li style={{ marginBottom: "10px" }}>
@@ -21,7 +21,7 @@ export function Layout() {
                 to="/dashboard"
                 style={{
                   textDecoration: "none",
-                  color: isActive("/dashboard") ? "#007bff" : "#333",
+                  color: isActive("/dashboard") ? "#000" : "#000",
                   fontWeight: isActive("/dashboard") ? "bold" : "normal",
                 }}
               >
@@ -33,7 +33,7 @@ export function Layout() {
                 to="/transfers"
                 style={{
                   textDecoration: "none",
-                  color: isActive("/transfers") ? "#007bff" : "#333",
+                  color: isActive("/transfers") ? "#000" : "#000",
                   fontWeight: isActive("/transfers") ? "bold" : "normal",
                 }}
               >
@@ -45,7 +45,7 @@ export function Layout() {
                 to="/payments"
                 style={{
                   textDecoration: "none",
-                  color: isActive("/payments") ? "#007bff" : "#333",
+                  color: isActive("/payments") ? "#000" : "#000",
                   fontWeight: isActive("/payments") ? "bold" : "normal",
                 }}
               >
@@ -57,7 +57,7 @@ export function Layout() {
                 to="/notifications"
                 style={{
                   textDecoration: "none",
-                  color: isActive("/notifications") ? "#007bff" : "#333",
+                  color: isActive("/notifications") ? "#000" : "#000",
                   fontWeight: isActive("/notifications") ? "bold" : "normal",
                 }}
               >
@@ -69,7 +69,7 @@ export function Layout() {
                 to="/profile"
                 style={{
                   textDecoration: "none",
-                  color: isActive("/profile") ? "#007bff" : "#333",
+                  color: isActive("/profile") ? "#000" : "#000",
                   fontWeight: isActive("/profile") ? "bold" : "normal",
                 }}
               >
@@ -78,7 +78,7 @@ export function Layout() {
             </li>
           </ul>
         </nav>
-        <div style={{ marginTop: "auto", paddingTop: "40px" }}>
+        <div style={{ paddingTop: "40px", display: "flex", flex: 1, flexDirection: "column", gap: 30, justifySelf: "flex-end", justifyContent: "flex-end" }}>
           <p>Usuário: {user?.name}</p>
           <button onClick={logout}>Sair</button>
         </div>
@@ -89,5 +89,5 @@ export function Layout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }

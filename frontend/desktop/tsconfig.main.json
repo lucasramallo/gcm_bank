@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "dist/main",
     "module": "commonjs",
+    "moduleResolution": "node",
     "noEmit": false,
+    "allowImportingTsExtensions": false,
     "jsx": "preserve"
   },
   "include": ["src/main"]

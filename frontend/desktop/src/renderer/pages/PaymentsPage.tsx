@@ -11,5 +11,5 @@ export function PaymentsPage() {
         {/* Lista de pagamentos será implementada aqui */}
       </div>
     </div>
-  )
+  );
 }

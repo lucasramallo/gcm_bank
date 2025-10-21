@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useAuth } from "../contexts/AuthContext"
+import { useAuth } from "../contexts/AuthContext";
 
 export function DashboardPage() {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   return (
     <div>
@@ -18,5 +18,5 @@ export function DashboardPage() {
         {/* Conteúdo do dashboard será implementado aqui */}
       </div>
     </div>
-  )
+  );
 }
